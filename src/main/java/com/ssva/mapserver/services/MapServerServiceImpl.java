@@ -19,14 +19,23 @@ public class MapServerServiceImpl implements MapServerService {
 
         return webClient.get()
                 .uri(jsonUrl)
-                .retrieve()
-                .bodyToMono(MapServerResponse.class)
-                .map(mapServerResponse -> {
-                    MapServerInfo mapServerInfo = new MapServerInfo();
-                    mapServerInfo.setMapName(mapServerResponse.getMapName());
-                    mapServerInfo.setDescription(mapServerResponse.getDescription());
-                    mapServerInfo.setLayers(mapServerResponse.getLayers());
-                    return mapServerInfo;
-                });
+                .exchangeToMono(response -> {
+                    //Would be best to build a custom ExchangeFilter class to handle all exceptions and errors,
+                    //for now if any request fails it will return an empty Mono which the controller will catch and throw a 404.
+                    if (response.statusCode().is2xxSuccessful()) {
+                        return response.bodyToMono(MapServerResponse.class)
+                                .map(mapServerResponse -> {
+                                    MapServerInfo mapServerInfo = new MapServerInfo();
+                                    mapServerInfo.setMapName(mapServerResponse.getMapName());
+                                    mapServerInfo.setDescription(mapServerResponse.getDescription());
+                                    mapServerInfo.setLayers(mapServerResponse.getLayers());
+                                    return mapServerInfo;
+                                });
+                    } else {
+                        return Mono.empty();
+                    }
+                })
+                .onErrorResume(e -> Mono.empty());
+
     }
 }

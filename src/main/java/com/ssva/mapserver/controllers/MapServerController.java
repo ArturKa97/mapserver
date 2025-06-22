@@ -20,7 +20,8 @@ public class MapServerController {
         String trimmedUrl = url.trim();
 
         return mapServerService.getMapServerInfo(trimmedUrl)
-                .map(ResponseEntity::ok);
+                .map(ResponseEntity::ok)
+                .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
 }
