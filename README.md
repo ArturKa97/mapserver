@@ -4,7 +4,7 @@ A Spring Boot REST API that fetches metadata from an ArcGIS MapServer service UR
 
 ## Requirements
 
-- (** required if needed to run with command "mvn spring-boot:run")
+- (Java and Maven required if needed to run with command "mvn spring-boot:run", otherwise the IDE will have it built in internally as its own "tools")
 - **Java 17+** (JDK must be installed and `JAVA_HOME` environment variable configured)  
 - **Maven 3.6+** (must be installed and added to your system `PATH`)  
 - Internet connection to access ArcGIS services (should be free and always available)
