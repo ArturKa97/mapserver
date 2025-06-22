@@ -54,7 +54,13 @@
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
-    </dependencies>
+		<dependency>
+			<groupId>org.wiremock.integrations</groupId>
+			<artifactId>wiremock-spring-boot</artifactId>
+			<version>3.10.0</version>
+		</dependency>
+
+	</dependencies>
 
 	<build>
 		<plugins>
