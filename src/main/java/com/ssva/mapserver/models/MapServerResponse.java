@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MapServiceResponse {
+public class MapServerResponse {
     private String mapName;
     private String description;
     private List<Layer> layers;
