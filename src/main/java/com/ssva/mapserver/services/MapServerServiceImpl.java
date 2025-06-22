@@ -1,6 +1,7 @@
 package com.ssva.mapserver.services;
 
 import com.ssva.mapserver.dtos.MapServerInfo;
+import com.ssva.mapserver.exceptions.MapServerClientException;
 import com.ssva.mapserver.models.MapServerResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class MapServerServiceImpl implements MapServerService {
                         return Mono.empty();
                     }
                 })
-                .onErrorResume(e -> Mono.empty());
+                .onErrorMap(e -> new MapServerClientException("Error fetching MapServer info", e));
 
     }
 }
