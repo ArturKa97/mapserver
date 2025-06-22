@@ -1,10 +1,10 @@
 package com.ssva.mapserver.services;
 
-import com.ssva.mapserver.models.MapServerResponse;
+import com.ssva.mapserver.dtos.MapServerInfo;
 import reactor.core.publisher.Mono;
 
 public interface MapServerService {
 
-    Mono<MapServerResponse> getMapServerInfo(String url);
+    Mono<MapServerInfo> getMapServerInfo(String url);
 
 }

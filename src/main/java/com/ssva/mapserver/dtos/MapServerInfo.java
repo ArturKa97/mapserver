@@ -1,5 +1,6 @@
-package com.ssva.mapserver.models;
+package com.ssva.mapserver.dtos;
 
+import com.ssva.mapserver.models.Layer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,9 +8,9 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class MapServerResponse {
+@NoArgsConstructor
+public class MapServerInfo {
 
     private String mapName;
     private String description;

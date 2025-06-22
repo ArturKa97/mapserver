@@ -1,6 +1,6 @@
 package com.ssva.mapserver.controllers;
 
-import com.ssva.mapserver.models.MapServerResponse;
+import com.ssva.mapserver.dtos.MapServerInfo;
 import com.ssva.mapserver.services.MapServerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,7 @@ public class MapServerController {
     private final MapServerService mapServerService;
 
     @GetMapping("/mapserver-info")
-    public Mono<ResponseEntity<MapServerResponse>> getMapServerInfo(@RequestParam String url) {
+    public Mono<ResponseEntity<MapServerInfo>> getMapServerInfo(@RequestParam String url) {
         String trimmedUrl = url.trim();
 
         return mapServerService.getMapServerInfo(trimmedUrl)
